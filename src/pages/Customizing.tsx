@@ -4,14 +4,11 @@ import Header from '../components/Header'
 
 const Customizing: React.FC = () => {
   const [memoryText, setMemoryText] = useState('.')
-  const [capColor, setcapColor] = useState([
-    'red',
-    'yellow',
-    'green',
-    'blue',
-    'purple',
-  ])
-
+  const [capColor, setCapColor] = useState('red')
+  const possibleCapColors = ['red', 'yellow', 'green', 'blue', 'purple']
+  const changeCapColor = (chooseCap: string) => {
+    setCapColor(chooseCap)
+  }
   return (
     <>
       <Header />
@@ -24,21 +21,21 @@ const Customizing: React.FC = () => {
         <div className="flex">
           <img
             id="img1"
-            src="/assets/img/perfumeColor/red.png"
-            alt="빨강 이미지"
+            src={`/assets/img/perfumeColor/${capColor}.png`}
+            alt={`${capColor} 이미지`}
             className="size-1/4"
           />
           <div className="relative w-600 mx-auto mt-10 flex">
             <div className="pt-28">
               <div className=" text-white text-4xl flex">Color</div>
               <div className="flex space-x-4 pt-3">
-                {capColor.map(function (colorEl) {
+                {possibleCapColors.map(function (colorEl) {
                   return (
                     <button
                       title={`${colorEl}버튼`}
                       type="button"
                       id={`btn_${colorEl}`}
-                      onClick={() => alert(colorEl)}
+                      onClick={() => changeCapColor(colorEl)}
                       className={`h-12 w-12 rounded-full bg-${colorEl}-500`}
                     ></button>
                   )
@@ -49,7 +46,7 @@ const Customizing: React.FC = () => {
           <div className="typoImg size-1/4">
             <img
               id="img2"
-              src="/assets/img/perfumeColor/red.png"
+              src={`/assets/img/perfumeColor/${capColor}.png`}
               alt="빨강 이미지"
               className=""
             />
