@@ -4,6 +4,13 @@ import Header from '../components/Header'
 
 const Customizing: React.FC = () => {
   const [memoryText, setMemoryText] = useState('.')
+  const [capColor, setcapColor] = useState([
+    'red',
+    'yellow',
+    'green',
+    'blue',
+    'purple',
+  ])
 
   return (
     <>
@@ -17,7 +24,7 @@ const Customizing: React.FC = () => {
         <div className="flex">
           <img
             id="img1"
-            src="/assets/img/perfumeColor/1.png"
+            src="/assets/img/perfumeColor/red.png"
             alt="빨강 이미지"
             className="size-1/4"
           />
@@ -25,48 +32,24 @@ const Customizing: React.FC = () => {
             <div className="pt-28">
               <div className=" text-white text-4xl flex">Color</div>
               <div className="flex space-x-4 pt-3">
-                <button
-                  title="빨간색 버튼"
-                  type="button"
-                  id="btn_color1"
-                  onClick={() => changeColor(1)}
-                  className="h-12 w-12 rounded-full bg-red-500"
-                ></button>
-                <button
-                  title="노란색 버튼"
-                  type="button"
-                  id="btn_color2"
-                  onClick={() => changeColor(2)}
-                  className="h-12 w-12 rounded-full bg-yellow-500"
-                ></button>
-                <button
-                  title="초록색 버튼"
-                  type="button"
-                  id="btn_color3"
-                  onClick={() => changeColor(3)}
-                  className="h-12 w-12 rounded-full bg-green-500"
-                ></button>
-                <button
-                  title="파란색 버튼"
-                  type="button"
-                  id="btn_color4"
-                  onClick={() => changeColor(4)}
-                  className="h-12 w-12 rounded-full bg-blue-400"
-                ></button>
-                <button
-                  title="보라색 버튼"
-                  type="button"
-                  id="btn_color5"
-                  onClick={() => changeColor(5)}
-                  className="h-12 w-12 rounded-full bg-purple-500"
-                ></button>
+                {capColor.map(function (colorEl) {
+                  return (
+                    <button
+                      title={`${colorEl}버튼`}
+                      type="button"
+                      id={`btn_${colorEl}`}
+                      onClick={() => alert(colorEl)}
+                      className={`h-12 w-12 rounded-full bg-${colorEl}-500`}
+                    ></button>
+                  )
+                })}
               </div>
             </div>
           </div>
           <div className="typoImg size-1/4">
             <img
               id="img2"
-              src="/assets/img/perfumeColor/1.png"
+              src="/assets/img/perfumeColor/red.png"
               alt="빨강 이미지"
               className=""
             />
