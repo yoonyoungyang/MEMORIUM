@@ -1,5 +1,26 @@
+// src/pages/Result.tsx
+import {
+  Chart as ChartJS,
+  Filler,
+  Legend,
+  LineElement,
+  PointElement,
+  RadialLinearScale,
+  Tooltip,
+} from 'chart.js'
 import React from 'react'
+import { Radar } from 'react-chartjs-2'
 import { useNavigate } from 'react-router-dom'
+
+// Register the components for the radar chart
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+)
 
 const Result: React.FC = () => {
   const navigate = useNavigate()
@@ -8,38 +29,76 @@ const Result: React.FC = () => {
     navigate('/customizing')
   }
 
+  const data = {
+    labels: ['Woody', 'Oriental', 'Fresh', 'Floral', 'Citrus'],
+    datasets: [
+      {
+        label: 'Scent Profile',
+        data: [8, 6, 5, 4, 7],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  }
+
   return (
-    <div className="bg-skyblue min-h-screen p-8">
-      <div className="text-8xl font-bold p-24">PerfumeName</div>
-      <img
-        id="PerfumeImg"
-        src="/assets/img/perfumeColor/1.png"
-        alt="Perfume"
-        className="float-right w-1/4 p-10"
-      />
-      <p className="pl-12 w-full md:w-1/2">
-        프로젝트 'Memorium'은 인공지능 기반 맞춤형 향수 제작 웹으로, 향수와
-        기억의 연결을 통해 특별한 나만의 향수를 제공합니다. '향수 공방의
-        디지털화'를 목표로 개발된 이 웹은 사용자가 인공지능 챗봇과 대화를 통해
-        자신의 취향에 맞는 향수를 추천받도록 설계되었습니다. 이 프로젝트는
-        오프라인 방문 없이도 웹에서 간편하게 맞춤형 향수를 제작할 수 있으며,
-        커스터마이징 기능을 통해 추억을 담을 수 있는 이벤트를 제공하여 사용자의
-        경험을 더욱 특별하게 만들어 줍니다.
-      </p>
-      <div className="mt-10">
-        <p className="font-bold text-2xl pt-10 pl-12">Recipe</p>
-        <p className="inline-block px-32">Top</p>
-        <p className="inline-block px-32">Middle</p>
-        <p className="inline-block px-32">Bottom</p>
+    <div className="bg-gray-800 text-white min-h-screen p-8 font-serif">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="md:w-1/2">
+            <h1 className="text-6xl font-bold">A Cool Dawn</h1>
+            <p className="text-2xl mt-2">서늘한 여명</p>
+            <p className="text-lg mt-8 leading-relaxed">
+              아침 이슬을 닮은 서늘함과 신선함을 표현한 향수입니다. Top 노트의
+              그린티가 청량한 아침을 깨우고, Middle 노트의 블랙베리가 달콤하고
+              풍부한 향을 더합니다. Base 노트로는 모스가 자연의 진한 향을
+              선사합니다.
+            </p>
+            <h2 className="text-4xl font-bold mt-16">RECIPE</h2>
+            <div className="flex justify-between mt-8">
+              <div className="text-center">
+                <h3 className="text-2xl mb-4">TOP</h3>
+                <img
+                  src="/assets/img/top.png"
+                  alt="Top Note"
+                  className="h-32 mx-auto"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-2xl mb-4">MIDDLE</h3>
+                <img
+                  src="/assets/img/middle.png"
+                  alt="Middle Note"
+                  className="h-32 mx-auto"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-2xl mb-4">BASE</h3>
+                <img
+                  src="/assets/img/base.png"
+                  alt="Base Note"
+                  className="h-32 mx-auto"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="md:w-1/2 mt-16 md:mt-0">
+            <Radar
+              data={data}
+              options={{ scales: { r: { min: 0, max: 10 } } }}
+            />
+          </div>
+        </div>
+        <div className="flex justify-center mt-16">
+          <button
+            onClick={handleNextClick}
+            className="bg-blue-500 text-white py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            Make Perfume Bottle
+          </button>
+        </div>
       </div>
-      <button
-        type="button"
-        title="Next"
-        onClick={handleNextClick}
-        className="bg-blue-500 text-white border-none py-3 px-8 text-center inline-block text-lg m-2 cursor-pointer rounded transition duration-400 absolute transform translate-x-full translate-y-full hover:text-black"
-      >
-        Next
-      </button>
     </div>
   )
 }
