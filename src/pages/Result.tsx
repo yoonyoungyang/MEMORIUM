@@ -47,9 +47,12 @@ const Result: React.FC = () => {
     scales: {
       r: {
         angleLines: {
+          display: true,
           color: 'rgba(255, 255, 255, 0.2)',
         },
         grid: {
+          display: true,
+          circular: true,
           color: 'rgba(255, 255, 255, 0.2)',
         },
         ticks: {
@@ -62,6 +65,11 @@ const Result: React.FC = () => {
         },
         suggestedMin: 0,
         suggestedMax: 10,
+      },
+    },
+    elements: {
+      line: {
+        tension: 0, // Keep the data shape as a polygon (pentagon)
       },
     },
   }
