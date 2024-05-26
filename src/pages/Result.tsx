@@ -35,11 +35,35 @@ const Result: React.FC = () => {
       {
         label: 'Scent Profile',
         data: [8, 6, 5, 4, 7],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        borderColor: 'rgba(255, 255, 255, 1)',
+        borderWidth: 2,
+        pointBackgroundColor: 'rgba(255, 255, 255, 1)',
       },
     ],
+  }
+
+  const options = {
+    scales: {
+      r: {
+        angleLines: {
+          color: 'rgba(255, 255, 255, 0.2)',
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)',
+        },
+        ticks: {
+          display: true,
+          color: 'white',
+          stepSize: 2,
+        },
+        pointLabels: {
+          color: 'white',
+        },
+        suggestedMin: 0,
+        suggestedMax: 10,
+      },
+    },
   }
 
   return (
@@ -84,10 +108,7 @@ const Result: React.FC = () => {
             </div>
           </div>
           <div className="md:w-1/2 mt-16 md:mt-0">
-            <Radar
-              data={data}
-              options={{ scales: { r: { min: 0, max: 10 } } }}
-            />
+            <Radar data={data} options={options} />
           </div>
         </div>
         <div className="flex justify-center mt-16">
