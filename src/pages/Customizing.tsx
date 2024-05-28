@@ -9,6 +9,7 @@ const Customizing: React.FC = () => {
   const changeCapColor = (chooseCap: string) => {
     setCapColor(chooseCap)
   }
+  const scentName = '향기로운 바람'
   return (
     <>
       <Header />
@@ -25,6 +26,9 @@ const Customizing: React.FC = () => {
             alt={`${capColor} 이미지`}
             className="size-1/4"
           />
+          <div className="text-3xl flex transform -translate-x-72 translate-y-80">
+            {scentName}
+          </div>
           <div className="relative w-600 mx-auto mt-10 flex">
             <div className="pt-28">
               <div className=" text-white text-4xl flex">Color</div>
