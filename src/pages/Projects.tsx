@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { Link } from 'react-router-dom'
+import { usePerfume } from '../contexts/perfume'
 
 const initialChats = [
   {
@@ -26,6 +27,7 @@ const Projects: React.FC = () => {
   const [chats, setChats] = useState(initialChats)
   const [loading, setLoading] = useState(false)
   const [finished, setFinished] = useState(false)
+  const { setPerfume } = usePerfume()
 
   const sendButton = () => {
     if (!chatText) return
@@ -51,7 +53,7 @@ const Projects: React.FC = () => {
           url: `http://localhost:4000/ai/perfume`,
           data: { questionAnswers: response.data.answers },
         }).then(function (perfumeResponse) {
-          console.log(perfumeResponse.data)
+          setPerfume(perfumeResponse.data)
           setFinished(true)
         })
       } else {
