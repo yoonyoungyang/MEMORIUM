@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import axios from 'axios'
 
 const initialChats = [
   {
@@ -24,6 +25,13 @@ const Projects: React.FC = () => {
   const [chatText, setChatText] = useState('')
   const [chats, setChats] = useState(initialChats)
   const [loading, setLoading] = useState(false)
+
+  axios({
+    method: 'get',
+    url: 'http://localhost:4000/health-check',
+  }).then(function (response) {
+    console.log(response)
+  })
 
   const sendButton = () => {
     if (!chatText) return
