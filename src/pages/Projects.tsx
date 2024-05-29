@@ -30,6 +30,7 @@ const Projects: React.FC = () => {
   const sendButton = () => {
     if (!chatText) return
 
+    setLoading(true)
     const newChats = [...chats, { content: chatText, role: 'user' }]
 
     axios({
@@ -37,12 +38,22 @@ const Projects: React.FC = () => {
       url: `http://localhost:4000/ai/chats`,
       data: { chats: newChats },
     }).then(function (response) {
+      setLoading(false)
+
       if (response.data.finish === true) {
         setChats([
           ...newChats,
           { content: '대화가 끝났습니다.', role: 'assistant' },
         ])
-        setFinished(true)
+
+        axios({
+          method: 'post',
+          url: `http://localhost:4000/ai/perfume`,
+          data: { questionAnswers: response.data.answers },
+        }).then(function (perfumeResponse) {
+          console.log(perfumeResponse.data)
+          setFinished(true)
+        })
       } else {
         setChats([
           ...newChats,
