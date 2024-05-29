@@ -10,17 +10,17 @@ import Projects from './pages/Projects'
 import Result from './pages/Result'
 
 const App: React.FC = () => (
-  <Router>
-    <Routes>
-      <PerfumeProvider>
+  <PerfumeProvider>
+    <Router>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/result" element={<Result />} />
         <Route path="/customizing" element={<Customizing />} />
-      </PerfumeProvider>
-    </Routes>
-  </Router>
+      </Routes>
+    </Router>
+  </PerfumeProvider>
 )
 
 export default App
