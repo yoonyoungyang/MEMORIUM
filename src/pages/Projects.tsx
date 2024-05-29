@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import { Link } from 'react-router-dom'
 
 const initialChats = [
   {
@@ -114,13 +115,13 @@ const Projects: React.FC = () => {
                     onChange={(e) => setChatText(e.target.value)}
                     type="text"
                     placeholder="Enter your message"
+                    onKeyPress={(e) => e.key === 'Enter' && sendButton()}
                     disabled={loading}
                   />
                   <button
                     className="send-button bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
                     id="addbutton"
                     onClick={sendButton}
-                    onKeyDown={(e) => e.key === 'Enter' && sendButton()}
                     disabled={loading}
                   >
                     Send
@@ -128,7 +129,9 @@ const Projects: React.FC = () => {
                 </div>
               </div>
               {finished === true ? (
-                <button title="다음 페이지 이동 버튼">다음 페이지 버튼</button>
+                <Link className=":text-gray-400" to="/result">
+                  Result
+                </Link>
               ) : null}
             </div>
             {loading && (
