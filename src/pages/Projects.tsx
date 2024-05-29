@@ -5,19 +5,19 @@ import axios from 'axios'
 
 const initialChats = [
   {
-    id: 0,
-    text: 'Hello!',
-    user: 'computer',
-  },
-  {
     id: 1,
-    text: 'Hi!',
-    user: 'user',
+    text: '안녕하세요! 저는 당신만의 특별한 향수를 만들어드리는 Memorium의 인공지능 챗봇 입니다.!',
+    role: 'assistant',
   },
   {
     id: 2,
-    text: 'How are you?',
-    user: 'computer',
+    text: '간단한 대화를 통해 당신의 이야기를 듣고, 그에 맞는 향을 찾아드리겠습니다. 당신에게 어울리는 향수와 함께 추억을 담아 가세요!',
+    role: 'assistant',
+  },
+  {
+    id: 3,
+    text: '그럼 지금부터 시작해 볼까요? 추구하는 이미지가 무엇인가요?',
+    role: 'assistant',
   },
 ]
 
@@ -38,20 +38,20 @@ const Projects: React.FC = () => {
 
     const newChats = [
       ...chats,
-      { id: chats.length, text: chatText, user: 'user' },
+      { id: chats.length, text: chatText, role: 'user' },
     ]
     setChats(newChats)
     setChatText('')
     setLoading(true)
 
-    // Simulate computer response after a delay
+    // Simulate assistant response after a delay
     setTimeout(() => {
-      const computerResponse = {
+      const assistantResponse = {
         id: newChats.length,
         text: 'I am doing great!',
-        user: 'computer',
+        role: 'assistant',
       }
-      setChats([...newChats, computerResponse])
+      setChats([...newChats, assistantResponse])
       setLoading(false)
     }, 2000)
   }
@@ -81,19 +81,19 @@ const Projects: React.FC = () => {
                     <div
                       key={chat.id}
                       className={`mb-4 p-4 rounded-lg max-w-75 relative ${
-                        chat.user === 'computer'
+                        chat.role === 'assistant'
                           ? 'bg-gray-300 text-black self-start ml-4'
                           : 'bg-blue-600 text-white self-end mr-4'
                       }`}
                       style={{
                         borderRadius:
-                          chat.user === 'computer'
+                          chat.role === 'assistant'
                             ? '15px 15px 15px 0'
                             : '15px 15px 0 15px',
                       }}
                     >
                       {chat.text}
-                      {chat.user === 'computer' ? (
+                      {chat.role === 'assistant' ? (
                         <div className="absolute top-0 left-0 w-0 h-0 border-t-[10px] border-t-transparent border-r-[10px] border-r-gray-300 border-b-[10px] border-b-transparent"></div>
                       ) : (
                         <div className="absolute top-0 right-0 w-0 h-0 border-t-[10px] border-t-transparent border-l-[10px] border-l-blue-600 border-b-[10px] border-b-transparent"></div>
