@@ -6,7 +6,7 @@ export type PerfumeResponse = {
     eng: string
   }
   description: string
-  perfume: {
+  recipe: {
     top: {
       name: string
       volume: number
