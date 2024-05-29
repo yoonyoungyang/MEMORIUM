@@ -46,17 +46,6 @@ const Projects: React.FC = () => {
     setChats(newChats)
     setChatText('')
     setLoading(true)
-
-    // Simulate assistant response after a delay
-    setTimeout(() => {
-      const assistantResponse = {
-        id: newChats.length,
-        content: 'I am doing great!',
-        role: 'assistant',
-      }
-      setChats([...newChats, assistantResponse])
-      setLoading(false)
-    }, 2000)
   }
 
   return (
