@@ -37,15 +37,16 @@ const Projects: React.FC = () => {
     ]
 
     axios({
-      method: 'get',
-      url: `http://localhost:4000/health-check?name=${chatText}`,
+      method: 'post',
+      url: `http://localhost:4000/ai/chats`,
+      data: { chats: chats },
     }).then(function (response) {
-      console.log(response.data.name)
+      console.log(response.data)
     })
 
     setChats(newChats)
     setChatText('')
-    setLoading(true)
+    // setLoading(true)
   }
 
   return (
