@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 const Customizing: React.FC = () => {
-  const [memoryText, setMemoryText] = useState('.')
+  const [memoryText, setMemoryText] = useState('')
   const [capColor, setCapColor] = useState('red')
   const possibleCapColors = ['red', 'yellow', 'green', 'blue', 'purple']
   const changeCapColor = (chooseCap: string) => {
@@ -13,7 +13,7 @@ const Customizing: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="pt-20 bg-black bg-opacity-60 items-center">
+      <div className="pt-20 pb-12 bg-black bg-opacity-60 items-center h-full w-full">
         {' '}
         {/* Add padding-top to avoid content overlap */}
         <div className="text-black text-5xl text-center font-bold">

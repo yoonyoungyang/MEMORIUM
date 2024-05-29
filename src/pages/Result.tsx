@@ -8,7 +8,7 @@ import {
   RadialLinearScale,
   Tooltip,
 } from 'chart.js'
-import React from 'react'
+import React, { useState } from 'react'
 import { Radar } from 'react-chartjs-2'
 import { useNavigate } from 'react-router-dom'
 
@@ -73,7 +73,21 @@ const Result: React.FC = () => {
       },
     },
   }
-
+  const [changeTopImg, setChangeTopImg] = useState('Figue')
+  const topIngredient = ['Figue', 'Greentea', 'Bitterlemon']
+  const changeTopIngImg = (chooseTop: string) => {
+    setChangeTopImg(chooseTop)
+  }
+  const [changeMiddleImg, setChangeMiddleImg] = useState('Seascent')
+  const middleIngredient = ['Seascent', 'YlangYlang', 'Freesia']
+  const changeMiddleIngImg = (chooseMiddle: string) => {
+    setChangeMiddleImg(chooseMiddle)
+  }
+  const [changeBottomImg, setChangeBottomImg] = useState('Figue')
+  const bottomIngredient = ['Figue', 'Greentea', 'Bitterlemon']
+  const changeBottomIngImg = (chooseBottom: string) => {
+    setChangeBottomImg(chooseBottom)
+  }
   return (
     <div className="bg-gray-800 text-white min-h-screen p-8 font-serif">
       <div className="container mx-auto">
@@ -92,26 +106,71 @@ const Result: React.FC = () => {
               <div className="text-center">
                 <h3 className="text-2xl mb-4">TOP</h3>
                 <img
-                  src="/assets/img/top.png"
+                  src={`/assets/img/recipe_img/${changeTopImg}.png`}
                   alt="Top Note"
                   className="h-32 mx-auto"
                 />
+                <div className="flex space-x-4 pt-3">
+                  {topIngredient.map(function (IngEl) {
+                    return (
+                      <button
+                        title={`${IngEl}버튼`}
+                        type="button"
+                        id={`btn_${IngEl}`}
+                        onClick={() => changeTopIngImg(IngEl)}
+                        className={`h-12 w-full rounded-full bg-red-500`}
+                      >
+                        {IngEl}
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
               <div className="text-center">
                 <h3 className="text-2xl mb-4">MIDDLE</h3>
                 <img
-                  src="/assets/img/middle.png"
+                  src={`/assets/img/recipe_img/${changeMiddleImg}.png`}
                   alt="Middle Note"
                   className="h-32 mx-auto"
                 />
+                <div className="flex space-x-4 pt-3">
+                  {middleIngredient.map(function (IngEl) {
+                    return (
+                      <button
+                        title={`${IngEl}버튼`}
+                        type="button"
+                        id={`btn_${IngEl}`}
+                        onClick={() => changeMiddleIngImg(IngEl)}
+                        className={`h-12 w-full rounded-full bg-blue-500`}
+                      >
+                        {IngEl}
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
               <div className="text-center">
                 <h3 className="text-2xl mb-4">BASE</h3>
                 <img
-                  src="/assets/img/base.png"
+                  src={`/assets/img/recipe_img/${changeBottomImg}.png`}
                   alt="Base Note"
                   className="h-32 mx-auto"
                 />
+                <div className="flex space-x-4 pt-3">
+                  {bottomIngredient.map(function (IngEl) {
+                    return (
+                      <button
+                        title={`${IngEl}버튼`}
+                        type="button"
+                        id={`btn_${IngEl}`}
+                        onClick={() => changeBottomIngImg(IngEl)}
+                        className={`h-12 w-full rounded-full bg-purple-500`}
+                      >
+                        {IngEl}
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
             </div>
           </div>

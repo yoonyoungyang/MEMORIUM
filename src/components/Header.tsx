@@ -35,6 +35,11 @@ const Header: React.FC = () => (
             </Link>
           </li>
           <li>
+            <Link className="hover:text-gray-400" to="/result">
+              Result
+            </Link>
+          </li>
+          <li>
             <Link className="hover:text-gray-400" to="/customizing">
               Customizing
             </Link>
