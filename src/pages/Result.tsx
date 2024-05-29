@@ -11,6 +11,7 @@ import {
 import React, { useState } from 'react'
 import { Radar } from 'react-chartjs-2'
 import { useNavigate } from 'react-router-dom'
+import { usePerfume } from '../contexts/perfume'
 
 // Register the components for the radar chart
 ChartJS.register(
@@ -24,6 +25,8 @@ ChartJS.register(
 
 const Result: React.FC = () => {
   const navigate = useNavigate()
+  const { perfume } = usePerfume()
+  console.log('perfume: ', perfume)
 
   const handleNextClick = () => {
     navigate('/customizing')
