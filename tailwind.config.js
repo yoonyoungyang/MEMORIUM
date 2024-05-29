@@ -9,7 +9,11 @@ module.exports = {
     'bg-green-500',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        dancing: ['"Dancing Script"', 'cursive'],
+      },
+    },
   },
   plugins: [],
 }
