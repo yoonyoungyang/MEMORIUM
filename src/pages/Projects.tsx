@@ -1,7 +1,7 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import axios from 'axios'
 
 const initialChats = [
   {
@@ -66,12 +66,12 @@ const Projects: React.FC = () => {
           className="w-full h-screen bg-cover bg-center relative"
           style={{ backgroundImage: "url('/assets/img/hero-bg.jpeg')" }}
         >
-          <div className="container mx-auto">
-            <div className="chatbot-container bg-gray-800 bg-opacity-30 shadow-md overflow-hidden flex flex-col mx-auto w-full md:w-3/4 h-[750px]">
+          <div className="container mx-auto h-full">
+            <div className="chatbot-container bg-gray-800 bg-opacity-30 shadow-md overflow-hidden flex flex-col mx-auto w-full md:w-3/4 h-full">
               <div className="chatbot-header text-white text-center py-4 text-xl font-bold">
                 Chat with AI!
               </div>
-              <div className="chatbox flex flex-col justify-between h-full">
+              <div className="chatbox flex flex-col flex-grow overflow-hidden">
                 <div
                   className="chat-content flex-grow p-4 overflow-y-auto"
                   id="chat-content"
