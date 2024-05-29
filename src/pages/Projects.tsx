@@ -120,12 +120,16 @@ const Projects: React.FC = () => {
                     className="send-button bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
                     id="addbutton"
                     onClick={sendButton}
+                    onKeyDown={(e) => e.key === 'Enter' && sendButton()}
                     disabled={loading}
                   >
                     Send
                   </button>
                 </div>
               </div>
+              {finished === true ? (
+                <button title="다음 페이지 이동 버튼">다음 페이지 버튼</button>
+              ) : null}
             </div>
             {loading && (
               <div
