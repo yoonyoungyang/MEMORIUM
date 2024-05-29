@@ -24,6 +24,7 @@ const Projects: React.FC = () => {
   const [chatText, setChatText] = useState('')
   const [chats, setChats] = useState(initialChats)
   const [loading, setLoading] = useState(false)
+  const [finished, setFinished] = useState(false)
 
   const sendButton = () => {
     if (!chatText) return
@@ -35,10 +36,18 @@ const Projects: React.FC = () => {
       url: `http://localhost:4000/ai/chats`,
       data: { chats: newChats },
     }).then(function (response) {
-      setChats([
-        ...newChats,
-        { content: response.data.nextQuestion, role: 'assistant' },
-      ])
+      if (response.data.finish === true) {
+        setChats([
+          ...newChats,
+          { content: '대화가 끝났습니다.', role: 'assistant' },
+        ])
+        setFinished(true)
+      } else {
+        setChats([
+          ...newChats,
+          { content: response.data.nextQuestion, role: 'assistant' },
+        ])
+      }
     })
 
     setChats(newChats)
