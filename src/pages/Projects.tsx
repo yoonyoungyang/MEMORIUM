@@ -5,19 +5,16 @@ import axios from 'axios'
 
 const initialChats = [
   {
-    id: 1,
     content:
       '안녕하세요! 저는 당신만의 특별한 향수를 만들어드리는 Memorium의 인공지능 챗봇 입니다.!',
     role: 'assistant',
   },
   {
-    id: 2,
     content:
       '간단한 대화를 통해 당신의 이야기를 듣고, 그에 맞는 향을 찾아드리겠습니다. 당신에게 어울리는 향수와 함께 추억을 담아 가세요!',
     role: 'assistant',
   },
   {
-    id: 3,
     content: '그럼 지금부터 시작해 볼까요? 추구하는 이미지가 무엇인가요?',
     role: 'assistant',
   },
@@ -31,17 +28,17 @@ const Projects: React.FC = () => {
   const sendButton = () => {
     if (!chatText) return
 
-    const newChats = [
-      ...chats,
-      { id: chats.length, content: chatText, role: 'user' },
-    ]
+    const newChats = [...chats, { content: chatText, role: 'user' }]
 
     axios({
       method: 'post',
       url: `http://localhost:4000/ai/chats`,
-      data: { chats: chats },
+      data: { chats: newChats },
     }).then(function (response) {
-      console.log(response.data)
+      setChats([
+        ...newChats,
+        { content: response.data.nextQuestion, role: 'assistant' },
+      ])
     })
 
     setChats(newChats)
