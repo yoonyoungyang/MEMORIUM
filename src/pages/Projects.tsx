@@ -53,7 +53,7 @@ const Projects: React.FC = () => {
           url: `http://localhost:4000/ai/perfume`,
           data: { questionAnswers: response.data.answers },
         }).then(function (perfumeResponse) {
-          setPerfume(perfumeResponse.data)
+          setPerfume(perfumeResponse.data.response)
           setFinished(true)
         })
       } else {
