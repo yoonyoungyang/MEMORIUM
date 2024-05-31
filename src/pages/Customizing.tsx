@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import CalligraphyImage from '../components/CaligraphyImage'
 
 const Customizing: React.FC = () => {
   const [memoryText, setMemoryText] = useState('')
@@ -26,6 +27,7 @@ const Customizing: React.FC = () => {
             alt={`${capColor} 이미지`}
             className="size-1/4"
           />
+          <CalligraphyImage text="hi" />
           <div className="text-3xl flex transform -translate-x-72 translate-y-80">
             {scentName}
           </div>
@@ -54,9 +56,6 @@ const Customizing: React.FC = () => {
               alt="빨강 이미지"
               className=""
             />
-            <div className="absolute transform translate-x-36 -translate-y-72 text-3xl">
-              {memoryText}
-            </div>
           </div>
 
           <div className="relative w-600 mx-auto mt-10 flex">
